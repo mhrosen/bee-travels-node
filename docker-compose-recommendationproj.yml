@@ -1,0 +1,37 @@
+---
+version: "3.3"
+
+services:
+  base:
+    image: bee-travels/node-base:v1
+    build: .
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
+
+  payment:
+    build: services/payment-v2
+    ports:
+      - "9403:9403"
+    depends_on:
+      - base
+
+  checkout:
+    build: services/checkout-v2
+    ports:
+      - "9402:9402"
+    depends_on:
+      - base
+      - postgres
+      - payment
+    environment:
+      - CHECKOUT_DATABASE=${CHECKOUT_DATABASE}
+      - CHECKOUT_PG_HOST=postgres
+      - CHECKOUT_PG_USER=postgres
+      - CHECKOUT_PG_PASSWORD=admin
+      - PAYMENT_URL=http://payment:9403
