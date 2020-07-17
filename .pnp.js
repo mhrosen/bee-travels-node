@@ -35,6 +35,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:services/checkout-v2"
       },
       {
+        "name": "yarn",
+        "reference": "workspace:services/checkout-v2/node_modules/yarn"
+      },
+      {
         "name": "currency-exchange",
         "reference": "workspace:services/currency-exchange"
       },
@@ -96,7 +100,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["payment", ["workspace:services/payment-v2"]],
       ["query-validator", ["workspace:packages/query-validator"]],
       ["ui-backend", ["workspace:services/ui/backend"]],
-      ["ui-frontend", ["workspace:services/ui/frontend"]]
+      ["ui-frontend", ["workspace:services/ui/frontend"]],
+      ["yarn", ["workspace:services/checkout-v2/node_modules/yarn"]]
     ],
     "fallbackPool": [
       [
@@ -20948,6 +20953,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["yargs", "npm:13.3.2"]
           ],
           "linkType": "HARD",
+        }]
+      ]],
+      ["yarn", [
+        ["workspace:services/checkout-v2/node_modules/yarn", {
+          "packageLocation": "./services/checkout-v2/node_modules/yarn/",
+          "packageDependencies": [
+            ["yarn", "workspace:services/checkout-v2/node_modules/yarn"]
+          ],
+          "linkType": "SOFT",
         }]
       ]]
     ]

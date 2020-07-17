@@ -35,3 +35,17 @@ services:
       - CHECKOUT_PG_USER=postgres
       - CHECKOUT_PG_PASSWORD=admin
       - PAYMENT_URL=http://payment:9403
+
+  hotel:
+    build: services/hotel-v1
+    ports:
+      - "9101:9101"
+    depends_on:
+      - base
+
+  car-rental:
+    build: services/car-rental-v1
+    ports:
+      - "9102:9102"
+    depends_on:
+      - base

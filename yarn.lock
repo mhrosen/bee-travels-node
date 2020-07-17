@@ -18563,3 +18563,12 @@ resolve@1.1.7:
   checksum: 2/6504a0bb4e6f5933ebaaa52307943a9cdb44da6200cd1ca8794aaa1d18b70f0acd2f49f46630b07bd4d2aa12cb1fe666b186d367c36fa1b4998f7ce8bdc9ffdf
   languageName: node
   linkType: hard
+
+"yarn@workspace:services/checkout-v2/node_modules/yarn":
+  version: 0.0.0-use.local
+  resolution: "yarn@workspace:services/checkout-v2/node_modules/yarn"
+  bin:
+    yarn: ./bin/yarn.js
+    yarnpkg: ./bin/yarn.js
+  languageName: unknown
+  linkType: soft
